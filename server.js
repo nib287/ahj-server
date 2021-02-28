@@ -57,7 +57,7 @@ app.use(async(ctx) => {
             return;              
         
         default:
-            ctx.response.status = 200;
+            ctx.response.body = 'сервер работает';
             return;
     }
 });
