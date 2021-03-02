@@ -24,15 +24,18 @@ app.use(async(ctx, next) => {
 app.use(async(ctx) => {
     let {method} = ctx.request.query;
     method ? method : method = ctx.request.body.method;
-
+    
     switch (method) {
         case 'allTickets':
             const ticketsWithoutDesc = tickets.map(ticket => {
+                const cloneTicket = {...ticket}
+                delete cloneTicket.description
                 
-                return  !ticket.description
+                return cloneTicket
             });
+
             ctx.response.body = ticketsWithoutDesc;
-        
+  
             return; 
         
         case 'ticketById':
