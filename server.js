@@ -28,8 +28,8 @@ app.use(async(ctx) => {
     switch (method) {
         case 'allTickets':
             const ticketsWithoutDesc = tickets.map(ticket => {
-                delete ticket.description;
-                return  ticket
+                
+                return  !ticket.description
             });
             ctx.response.body = ticketsWithoutDesc;
         
